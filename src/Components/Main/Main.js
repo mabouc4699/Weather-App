@@ -28,7 +28,7 @@ const Main = ({ weather }) => {
           color="white"
         >
           {weather.daily.map((day, idx) => {
-            return <>{<Week key={idx} idx={idx} weather={day} />}</>;
+            return <Week key={idx} idx={idx} weather={day} />;
           })}
         </Box>
         <Current weather={weather} />
