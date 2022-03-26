@@ -29,11 +29,11 @@ const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
       >
         <SvgIcon
           sx={{
-            "&": { paddingLeft: 2, transform: "scale(0.85)" },
+            "&": { paddingLeft: 2 },
             "&:hover": { fill: "red" },
           }}
           component={RemoveCircleOutlineIcon}
-          viewBox="0 0 24 24"
+          viewBox="0 0 35 35"
         />
       </Box>
 

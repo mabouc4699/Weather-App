@@ -4,17 +4,16 @@ import { getImg } from "../../Utils/handleFunctions";
 
 const Week = ({ weather, idx, weatherIcon, getTime }) => {
   return (
-    <>
+    <Box py={1} backgroundColor="#0e092b">
       <Box>
-        <Typography py={1}>{getTime(weather, idx)} </Typography>
+        <Typography>{getTime(weather, idx)} </Typography>
         <Box component="img" src={weatherIcon} alt="Weather_Icon" />
       </Box>
-      <Typography borderBottom="1px solid white" pb={3} mb={1}>
+      <Typography borderBottom="1px solid white">
         {weather.weather[0].main}. High at {Math.ceil(weather.temp.max)}° and
         Lows around {Math.ceil(weather.temp.min)}°
       </Typography>
-      <br />
-    </>
+    </Box>
   );
 };
 

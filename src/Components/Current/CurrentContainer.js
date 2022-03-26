@@ -4,6 +4,7 @@ import Current from "./Current";
 
 const CurrentContainer = ({ weather }) => {
   const [data, setData] = useState();
+  const [dataPref, setDataPref] = useState("conditions");
   const [weatherIcon, setWeatherIcon] = useState();
 
   useEffect(() => {
@@ -15,6 +16,8 @@ const CurrentContainer = ({ weather }) => {
     <>
       <Current
         data={data}
+        pref={dataPref}
+        setPref={setDataPref}
         getCurrentTime={getCurrentTime}
         weather={weather}
         weatherIcon={weatherIcon}

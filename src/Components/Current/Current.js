@@ -1,9 +1,16 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Chart } from "../Chart";
 import { SunriseSunset } from "../SunriseSunset";
 
-const Current = ({ data, getCurrentTime, weather, weatherIcon }) => {
+const Current = ({
+  data,
+  getCurrentTime,
+  weather,
+  weatherIcon,
+  pref,
+  setPref,
+}) => {
   return (
     <Box
       position="sticky"
@@ -22,7 +29,7 @@ const Current = ({ data, getCurrentTime, weather, weatherIcon }) => {
         </Typography>
         <Typography variant="h3">{Math.ceil(weather.current.temp)}°</Typography>
         <Box
-          sx={{ "&": { transform: "scale(1.25)" } }}
+          sx={{ "&": { transform: "scale(1.15)" } }}
           src={weatherIcon}
           alt="Weather_Icon"
           component="img"
@@ -31,8 +38,10 @@ const Current = ({ data, getCurrentTime, weather, weatherIcon }) => {
         <Typography>
           Wind: {Math.ceil(weather.current.wind_speed)}mph
         </Typography>
+        <Button onClick={() => setPref("conditions")}>Conditions</Button>
+        <Button onClick={() => setPref("temperature")}>Temperature</Button>
       </Box>
-      <Chart data={data} />
+      <Chart data={data} pref={pref} />
       <SunriseSunset weather={weather} />
     </Box>
   );
