@@ -10,6 +10,7 @@ const MainContainer = () => {
   const [lat, setLat] = useState();
   const [long, setLong] = useState();
   const [weather, setWeather] = useState();
+  const [displayChoice, setDisplayChoice] = useState("week");
 
   useEffect(() => {
     handle.getPositionData(setLat, setLong);
@@ -17,7 +18,7 @@ const MainContainer = () => {
     if (weather === undefined && lat !== undefined && long !== undefined) {
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${forecastLength}&appid=fe146ea0475520c4d6cfdd513ceecb37&units=${units}`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${forecastLength}&appid=${process.env.REACT_APP_API_KEY}&units=${units}`
         )
         .then((response) => {
           setWeather(response.data);
@@ -30,7 +31,11 @@ const MainContainer = () => {
     <>
       {weather && (
         <Box>
-          <Main weather={weather} />
+          <Main
+            weather={weather}
+            displayChoice={displayChoice}
+            setDisplayChoice={setDisplayChoice}
+          />
         </Box>
       )}
     </>

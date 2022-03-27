@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentTime, getImg } from "../../Utils/handleFunctions";
+import { getCurrentTime } from "../../Utils/handleFunctions";
 import Current from "./Current";
 
-const CurrentContainer = ({ weather }) => {
+const CurrentContainer = ({ weather, displayChoice, setDisplayChoice }) => {
   const [data, setData] = useState();
   const [dataPref, setDataPref] = useState("conditions");
-  const [weatherIcon, setWeatherIcon] = useState();
 
   useEffect(() => {
-    getImg(weather, setWeatherIcon);
     setData(weather.hourly.slice(0, 24));
   }, [weather]);
 
@@ -20,7 +18,8 @@ const CurrentContainer = ({ weather }) => {
         setPref={setDataPref}
         getCurrentTime={getCurrentTime}
         weather={weather}
-        weatherIcon={weatherIcon}
+        displayChoice={displayChoice}
+        setDisplayChoice={setDisplayChoice}
       />
     </>
   );

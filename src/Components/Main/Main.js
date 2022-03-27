@@ -4,22 +4,16 @@ import { Alert } from "../Alert";
 import { Week } from "../Week";
 import { Current } from "../Current";
 
-const Main = ({ weather }) => {
+const Main = ({ weather, displayChoice, setDisplayChoice }) => {
   return (
     <Box textAlign="center">
-      {weather.alerts && weather.alerts.length > 0 && (
-        <>
-          {weather.alerts.map((alert, idx) => {
-            return (
-              <>
-                <Alert alert={alert} timeZone={weather.timezone} />
-              </>
-            );
-          })}
-        </>
-      )}
-
       <Box display="flex">
+        <Current
+          weather={weather}
+          displayChoice={displayChoice}
+          setDisplayChoice={setDisplayChoice}
+        />
+
         <Box
           width="100%"
           display="flex"
@@ -27,11 +21,14 @@ const Main = ({ weather }) => {
           textAlign="center"
           color="white"
         >
-          {weather.daily.map((day, idx) => {
-            return <Week key={idx} idx={idx} weather={day} />;
-          })}
+          {displayChoice === "week" ? (
+            weather.daily.map((day, idx) => {
+              return <Week key={idx} idx={idx} weather={day} />;
+            })
+          ) : (
+            <Alert alerts={weather.alerts} timeZone={weather.timezone} />
+          )}
         </Box>
-        <Current weather={weather} />
       </Box>
     </Box>
   );

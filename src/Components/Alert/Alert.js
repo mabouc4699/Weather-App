@@ -4,18 +4,7 @@ import React from "react";
 
 const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
   return (
-    <Box
-      sx={{
-        "&": {
-          position: "relative",
-          backgroundColor: "white",
-          cursor: "pointer",
-          width: "100%",
-          borderBottom: "1px solid lightgray",
-        },
-      }}
-      onClick={() => setShow(!show)}
-    >
+    <>
       <Box
         sx={{
           "&": {
@@ -29,7 +18,7 @@ const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
       >
         <SvgIcon
           sx={{
-            "&": { paddingLeft: 2 },
+            "&": { paddingLeft: 2, fill: "black" },
             "&:hover": { fill: "red" },
           }}
           component={RemoveCircleOutlineIcon}
@@ -37,8 +26,8 @@ const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
         />
       </Box>
 
-      <Box pt={1}>
-        <Typography variant="p" fontWeight="600">
+      <Box pt={1} color="gray">
+        <Typography variant="p" fontWeight="600" color="black">
           {alert.event}
         </Typography>
         <Box sx={{ "&": { display: "flex", justifyContent: "center" } }}>
@@ -65,7 +54,12 @@ const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
           >
             Source: {alert.sender_name}
           </Typography>
-          <Box pb={2} m={"auto"} width={{ xs: "100%", md: "70%", lg: "50%" }}>
+          <Box
+            color="black"
+            pb={2}
+            m={"auto"}
+            width={{ xs: "100%", md: "70%", lg: "50%" }}
+          >
             {alert.description.split("*").map((str) => (
               <>
                 <br />
@@ -84,7 +78,7 @@ const Alert = ({ alert, show, setShow, timeZone, setRemove, getFullTime }) => {
           Source: {alert.sender_name}
         </Typography>
       )}
-    </Box>
+    </>
   );
 };
 
