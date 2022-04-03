@@ -7,7 +7,7 @@ const Chart = ({ data, pref }) => {
     <Box mx="auto">
       {pref === "conditions" ? (
         <LineChart
-          width={500}
+          width={300}
           height={275}
           data={data.map((datum) => {
             return {
@@ -55,7 +55,7 @@ const Chart = ({ data, pref }) => {
         </LineChart>
       ) : (
         <LineChart
-          width={500}
+          width={300}
           height={275}
           data={data.map((datum) => {
             return {

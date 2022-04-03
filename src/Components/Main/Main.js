@@ -7,7 +7,7 @@ import { Current } from "../Current";
 const Main = ({ weather, displayChoice, setDisplayChoice }) => {
   return (
     <Box textAlign="center">
-      <Box display="flex">
+      <Box display="flex" flexDirection="column">
         <Current
           weather={weather}
           displayChoice={displayChoice}

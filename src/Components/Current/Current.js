@@ -17,7 +17,7 @@ const Current = ({
     <Box
       position="sticky"
       top="0"
-      height="100vh"
+      height="fit-content"
       alignSelf="flex-start"
       width="100%"
       backgroundColor="white"
@@ -34,7 +34,7 @@ const Current = ({
         <Typography>
           Wind: {Math.ceil(weather.current.wind_speed)}mph
         </Typography>
-        {weather.alerts && displayChoice === "week" ? (
+        {weather.alerts && displayChoice === "alerts" ? (
           <Box>
             <Button
               onClick={() => setDisplayChoice("alerts")}
